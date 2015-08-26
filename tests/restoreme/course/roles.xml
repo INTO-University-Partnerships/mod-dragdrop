@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roles>
+  <role_overrides>
+  </role_overrides>
+  <role_assignments>
+    <assignment id="24">
+      <roleid>5</roleid>
+      <userid>17</userid>
+      <timemodified>1408374234</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="23">
+      <roleid>5</roleid>
+      <userid>16</userid>
+      <timemodified>1408374234</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="22">
+      <roleid>5</roleid>
+      <userid>15</userid>
+      <timemodified>1408374232</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="21">
+      <roleid>5</roleid>
+      <userid>14</userid>
+      <timemodified>1408374229</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="20">
+      <roleid>5</roleid>
+      <userid>13</userid>
+      <timemodified>1408374228</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="19">
+      <roleid>5</roleid>
+      <userid>12</userid>
+      <timemodified>1408374227</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="18">
+      <roleid>5</roleid>
+      <userid>11</userid>
+      <timemodified>1408374225</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="17">
+      <roleid>5</roleid>
+      <userid>10</userid>
+      <timemodified>1408374224</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="16">
+      <roleid>5</roleid>
+      <userid>19</userid>
+      <timemodified>1408374224</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="15">
+      <roleid>5</roleid>
+      <userid>18</userid>
+      <timemodified>1408374223</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="13">
+      <roleid>5</roleid>
+      <userid>8</userid>
+      <timemodified>1408373654</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="9">
+      <roleid>4</roleid>
+      <userid>8</userid>
+      <timemodified>1408372266</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+    <assignment id="5">
+      <roleid>5</roleid>
+      <userid>7</userid>
+      <timemodified>1408372240</timemodified>
+      <modifierid>2</modifierid>
+      <component></component>
+      <itemid>0</itemid>
+      <sortorder>0</sortorder>
+    </assignment>
+  </role_assignments>
+</roles>

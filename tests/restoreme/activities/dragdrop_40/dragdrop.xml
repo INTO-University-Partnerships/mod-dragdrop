@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="2" moduleid="40" modulename="dragdrop" contextid="76">
+  <dragdrop id="2">
+    <name>Drag and drop</name>
+    <header>&lt;p&gt;&lt;a href="$@COURSEVIEWBYID*2@$"&gt;Course link in header&lt;/a&gt;&lt;/p&gt;</header>
+    <footer>&lt;p&gt;&lt;a href="$@COURSEVIEWBYID*2@$"&gt;Course link in footer&lt;/a&gt;&lt;/p&gt;</footer>
+    <num_attempts>5</num_attempts>
+    <instruction>&lt;p&gt;Complete the task&lt;br /&gt;&lt;/p&gt;</instruction>
+    <display_labels>1</display_labels>
+    <feedback_correct>&lt;p&gt;That was good I think&lt;br /&gt;&lt;/p&gt;</feedback_correct>
+    <hint>&lt;p&gt;Work faster&lt;br /&gt;&lt;/p&gt;</hint>
+    <words id="7">
+      <wordblock>Denmark.</wordblock>
+      <tagid>1</tagid>
+    </words>
+    <words id="6">
+      <wordblock>the state of</wordblock>
+      <tagid>8</tagid>
+    </words>
+    <words id="5">
+      <wordblock>in</wordblock>
+      <tagid>6</tagid>
+    </words>
+    <words id="4">
+      <wordblock>rotten</wordblock>
+      <tagid>5</tagid>
+    </words>
+    <words id="3">
+      <wordblock>is</wordblock>
+      <tagid>4</tagid>
+    </words>
+    <words id="2">
+      <wordblock>Something</wordblock>
+      <tagid>1</tagid>
+    </words>
+    <sentences id="3">
+      <mark>0</mark>
+      <sentence_words id="3">
+        <position>1</position>
+        <xcoord>2</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>2</wordblockid>
+      </sentence_words>
+      <sentence_words id="4">
+        <position>2</position>
+        <xcoord>98</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>3</wordblockid>
+      </sentence_words>
+      <sentence_words id="5">
+        <position>3</position>
+        <xcoord>138</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>4</wordblockid>
+      </sentence_words>
+      <sentence_words id="6">
+        <position>4</position>
+        <xcoord>203</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>5</wordblockid>
+      </sentence_words>
+      <sentence_words id="7">
+        <position>5</position>
+        <xcoord>244</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>6</wordblockid>
+      </sentence_words>
+      <sentence_words id="8">
+        <position>6</position>
+        <xcoord>337</xcoord>
+        <ycoord>62</ycoord>
+        <wordblockid>7</wordblockid>
+      </sentence_words>
+    </sentences>
+    <feedback id="1">
+      <attempt>1</attempt>
+      <feedback>&lt;p&gt;Not very good I suppose&lt;br /&gt;&lt;/p&gt;</feedback>
+    </feedback>
+    <feedback id="2">
+      <attempt>2</attempt>
+      <feedback>&lt;p&gt;Really bad&lt;br /&gt;&lt;/p&gt;</feedback>
+    </feedback>
+    <feedback id="3">
+      <attempt>3</attempt>
+      <feedback>&lt;p&gt;Getting worse&lt;br /&gt;&lt;/p&gt;</feedback>
+    </feedback>
+    <feedback id="4">
+      <attempt>4</attempt>
+      <feedback>&lt;p&gt;Stop attempting this&lt;br /&gt;&lt;/p&gt;</feedback>
+    </feedback>
+    <feedback id="5">
+      <attempt>5</attempt>
+      <feedback>&lt;p&gt;&lt;/p&gt;&lt;p&gt;Please go to a different university&lt;br /&gt;&lt;/p&gt;&lt;br /&gt;</feedback>
+    </feedback>
+  </dragdrop>
+</activity>

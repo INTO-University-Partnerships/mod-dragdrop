@@ -1,0 +1,8 @@
+<td class="sentence">
+    <span>{% verbatim %}{{ attempt.sentence }}{% endverbatim %}</span>
+</td>
+<td>{% verbatim %}{{ attempt.timecreated_formatted }}{% endverbatim %}</td>
+<div class="editor-html" ng-bind-html="form.instruction.html"></div>
+<td ng-bind-html="attempt.feedback"></td>
+<td ng-show="attempt.correct" class="correct-response">{{ trans('correct', plugin) }}</td>
+<td ng-hide="attempt.correct" class="incorrect-response">{{ trans('incorrect', plugin) }}</td>

@@ -1,0 +1,51 @@
+{% extends 'base.twig' %}
+{% block content %}
+
+    {# begin preamble #}
+    <h4>{{ trans('instructions', plugin) }}</h4>
+    <div class="dragdrop-instructions" ng-bind-html="settings.instruction"></div>
+    <div class="remaining-attempts">
+        {{ trans('remaining_attempts', plugin) }}{% verbatim %}{{ remaining_attempts }}{% endverbatim %}
+    </div>
+    {# end preamble #}
+
+    {# begin word block dock #}
+    <div class="draggable-area-label">{{ trans('word_blocks', plugin) }}</div>
+    <drop-area-dock id="dock-area-container"
+                    jqyoui-droppable
+                    data-drop="true"
+                    blocks="blocks"
+                    tags="tags"
+                    display-labels="settings.display_labels"
+                    loading="loading"
+                    rendered="rendered"
+                    remove-word-block="removeWordBlock(id)">
+    </drop-area-dock>
+    {# end word block dock #}
+
+    {# begin drop area #}
+    <div class="draggable-area-label">{{ trans('drop_area', plugin) }}</div>
+    <drop-area data-drop="true"
+               jqyoui-droppable
+               placed="placed"
+               rendered="rendered"
+               class="drop-area well">
+    </drop-area>
+    {# end drop area #}
+
+    {# begin action buttons #}
+    <div class="dragdrop-buttons">
+        <button ng-hide="locked" class="btn btn-info" type="button" ng-click="hint()">{{ trans('hint', plugin) }}</button>
+        <button ng-hide="locked" class="btn btn-warning" type="button" ng-click="reset()">{{ trans('reset') }}</button>
+        <button ng-disabled="placed.wordblocks.length == 0" ng-hide="locked" class="btn btn-primary" type="button" ng-click="submitAttempt()">{{ trans('submit') }}</button>
+    </div>
+    {# end action buttons #}
+
+    {# key #}
+    <dragdrop-key ng-show="settings.display_labels"
+                  tags="tags"></dragdrop-key>
+
+    {# begin alerts #}
+    <alerts messages="messages"></alerts>
+    {# end alerts #}
+{% endblock %}

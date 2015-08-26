@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {% verbatim %}{{ title }}{% endverbatim %}
+    </h3>
+</div>
+<div class="modal-body">
+    <textarea tiny-mce ng-attr-dialog-id="id" cols="80" rows="15" ng-attr-content="content"></textarea>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

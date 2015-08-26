@@ -1,0 +1,66 @@
+{% extends 'base.twig' %}
+{% block content %}
+    {# end alerts #}
+
+    {# begin list cards #}
+    <div class="well well-small">
+
+        <h3>{{ trans('all_attempts', plugin) }}</h3>
+
+        {# begin filters #}
+        <form class="form-inline" role="form">
+
+            {# begin free text filter by word or tag #}
+            <label for="id_filter_q">{{ trans('search') }}&colon;</label>
+            <input id="id_filter_q" type="text" ng-trim ng-model="filters.q" ng-keyup="filterQChanged()" placeholder="{{ trans('searchbyuser', plugin) }}"/>
+            {# end free text filter by word or tag #}
+        </form>
+        {# end filters#}
+
+        {# begin table #}
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    {% set headings = ['user', 'numattempts', 'lastattempt', 'completed'] %}
+                    {% for key, heading in headings %}
+                        <th>
+                            <a href ng-click="sortAttempts('{{ heading }}')">{{ trans(heading, plugin) }}
+                                <i ng-show="filters.direction == 'DESC' && filters.sort == '{{ heading }}'" class="icon-arrow-up"></i>
+                                <i ng-show="filters.direction == 'ASC' && filters.sort == '{{ heading }}'" class="icon-arrow-down"></i>
+                            </a>
+                        </th>
+                    {% endfor %}
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="attempt in attempts"
+                    attempt-report-list-item
+                    attempt="attempt"
+                    view-attempts="viewAttempts(userid)"
+                    messages="messages">
+                </tr>
+                <tr ng-show="total == 0" class="warning">
+                    <td colspan="5" class="no-attempts">{{ trans('no_attempts', plugin) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {# end table #}
+
+        {# begin pagination #}
+        {% verbatim %}
+        <report-pagination per-page="{{ perPage }}"
+                    current-page="currentPage"
+                    total="total"
+                    fetch-page="getPageOfAttempts(currentPage)"
+                    ng-show="total > perPage">
+            </report-pagination>
+        {% endverbatim %}
+        {# end pagination #}
+
+    </div>
+    {# end list cards #}
+
+{% endblock %}

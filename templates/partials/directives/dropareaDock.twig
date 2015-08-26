@@ -1,0 +1,12 @@
+<div class="well" id="dock-area">
+    <draggable-word ng-repeat="(index, block) in blocks"
+                    ng-class="{hidden: loading}"
+                    jqyoui-draggable
+                    block="block"
+                    data-jqyoui-options="{ revert:'invalid', animate: true }"
+                    data-drag="true"
+                    tag="getLabelText(blocks[index].tagid)"
+                    display-labels="displayLabels"
+                    id="{% verbatim %}{{ block.id }}{% endverbatim %}">
+    </draggable-word>
+</div>

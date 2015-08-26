@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<question_categories>
+  <question_category id="1">
+    <name>Default for newcourse</name>
+    <contextid>15</contextid>
+    <contextlevel>50</contextlevel>
+    <contextinstanceid>2</contextinstanceid>
+    <info>The default category for questions shared in context 'newcourse'.</info>
+    <infoformat>0</infoformat>
+    <stamp>gold-moodle.local+140827135805+2Ax86y</stamp>
+    <parent>0</parent>
+    <sortorder>999</sortorder>
+    <questions>
+      <question id="1">
+        <parent>0</parent>
+        <name>What is this question</name>
+        <questiontext>&lt;p&gt;Text about a question ##&lt;/p&gt;</questiontext>
+        <questiontextformat>1</questiontextformat>
+        <generalfeedback>&lt;p&gt;Feedback&lt;/p&gt;</generalfeedback>
+        <generalfeedbackformat>1</generalfeedbackformat>
+        <defaultmark>1.0000000</defaultmark>
+        <penalty>0.3333333</penalty>
+        <qtype>gapfill</qtype>
+        <length>1</length>
+        <stamp>gold-moodle.local+140827135955+JUE7TC</stamp>
+        <version>gold-moodle.local+140827140005+oUx7KB</version>
+        <hidden>0</hidden>
+        <timecreated>1409147995</timecreated>
+        <timemodified>1409148005</timemodified>
+        <createdby>2</createdby>
+        <modifiedby>2</modifiedby>
+        <question_hints>
+        </question_hints>
+        <tags>
+        </tags>
+      </question>
+    </questions>
+  </question_category>
+</question_categories>

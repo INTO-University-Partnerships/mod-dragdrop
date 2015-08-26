@@ -1,0 +1,127 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <div ng-show="reporting">
+        <ul class="breadcrumb" ng-show="userid != 0">
+            <li>
+                <a href="#/attempts">{{ trans('all_attempts', plugin) }}</a> <span class="divider">/</span>
+            </li>
+            <li>
+                {% verbatim %}{{ user.firstname }} {{ user.lastname }}{% endverbatim %}
+            </li>
+        </ul>
+    </div>
+    <div class="well well-small">
+        <h4>
+            {{ trans('previous_attempts', plugin) }}<span ng-show="userid != 0">:
+                {% verbatim %}{{ user.firstname }} {{ user.lastname }}{% endverbatim %}
+            </span>
+        </h4>
+
+        <div class="remaining-attempts">
+            {{ trans('remaining_attempts', plugin) }}{% verbatim %}{{ remaining_attempts }}{% endverbatim %}
+        </div>
+
+        {# begin action buttons #}
+        <div class="dragdrop-buttons">
+            <button ng-show="manageAttempts && attempts.previous.length > 0"
+                    class="btn btn-warning" type="button" ng-click="reset()">{{ trans('reset') }}
+            </button>
+        </div>
+        <div class="clearfix"></div>
+        {# end action buttons #}
+
+        {# begin table #}
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>{{ trans('sentence_submitted', plugin) }}</th>
+                    <th>{{ trans('date_attempted', plugin) }}</th>
+                    <th>{{ trans('feedback', plugin) }}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="attempt in attempts.previous"
+                    attempt-list-item
+                    attempt="attempt">
+                </tr>
+                <tr ng-show="attempts.previous.length == 0" class="warning">
+                    <td colspan="4" class="no-attempts">{{ trans('no_attempts', plugin) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {# end table #}
+
+    </div>
+
+    <div class="well well-small">
+        <h4>
+            {{ trans('reset_attempts', plugin) }}<span ng-show="userid != 0">:
+                {% verbatim %}{{ user.firstname }} {{ user.lastname }}{% endverbatim %}
+            </span>
+        </h4>
+
+        {# begin table #}
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>{{ trans('sentence_submitted', plugin) }}</th>
+                    <th>{{ trans('date_attempted', plugin) }}</th>
+                    <th>{{ trans('feedback', plugin) }}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="attempt in attempts.reset"
+                    attempt-list-item
+                    attempt="attempt">
+                </tr>
+                <tr ng-show="attempts.reset.length == 0" class="warning">
+                    <td colspan="4" class="no-attempts">{{ trans('no_attempts', plugin) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {# end table #}
+    </div>
+
+    {# begin comments #}
+    <div ng-controller="commentsCtrl" class="clearfix">
+        <h4>
+            {{ trans('comments', plugin) }}
+        </h4>
+        <div ng-show="manageComments">
+            <hr>
+            <textarea cols="65" rows="6"
+                      ng-trim=""
+                      ng-model="comment"
+                      id="id_comment"
+                      class="ng-valid ng-dirty
+                      dragdrop-comment-textarea">
+            </textarea>
+            <button ng-click="addComment()" ng-disabled="!comment" type="button" class="btn"
+                    disabled="disabled">Add
+            </button>
+            <hr>
+        </div>
+        <div ng-repeat="comment in comments"
+             comment-list-item
+             comment="comment"
+             manage="manageComments"
+             delete-comment="deleteComment(comment.id)"
+             edit-comment="editComment(comment)"
+             stop-auto-refresh="stopAutoRefresh()"
+             start-auto-refresh="startAutoRefresh()"
+             class="dragdrop-comment">
+        </div>
+        <div ng-show="comments.length == 0" class="warning">
+            {{ trans('no_comments', plugin) }}</td>
+        </div>
+    </div>
+    {# end comments #}
+
+{% endblock %}

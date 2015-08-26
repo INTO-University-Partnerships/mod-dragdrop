@@ -1,0 +1,7 @@
+<div>
+    <ul class="nav nav-tabs">
+        <li ng-repeat="item in menu" ng-class="{'active': item.active}">
+            {% verbatim %}<a href="{{ item.route }}">{{ item.title }}</a>{% endverbatim %}
+        </li>
+    </ul>
+</div>

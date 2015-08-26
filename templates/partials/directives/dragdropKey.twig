@@ -1,0 +1,12 @@
+<div class="dragdrop-key-container clearfix">
+    <span class="dragdrop-key-heading">{{ trans('key', plugin) }}</span>
+    <div ng-repeat="group in groupedTags" class="dragdrop-key-tag-group">
+        <span class="dragdrop-key-subheading">{% verbatim %}{{ group.heading }}{% endverbatim %}</span>
+        <ul class="dragdrop-key-tag-list">
+            <li ng-repeat="i in group.tags">
+                <span class="dragdrop-key-tag-abbrev">{% verbatim %}{{ tags[i].abbreviation }}{% endverbatim %}: </span>
+                <span class="dragdrop-key-tag-text">{% verbatim %}{{ tags[i].name }}{% endverbatim %}</span>
+            </li>
+        </ul>
+    </div>
+</div>

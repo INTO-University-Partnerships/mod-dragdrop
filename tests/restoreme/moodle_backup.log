@@ -1,0 +1,34 @@
+[Wed 27 Aug 2014 17:37:35 BST] [info] instantiating backup controller a813bdd3c3df8588af4fc9df4ca8c103
+[Wed 27 Aug 2014 17:37:35 BST] [debug] setting controller status to 100
+[Wed 27 Aug 2014 17:37:35 BST] [debug] loading controller plan
+[Wed 27 Aug 2014 17:37:35 BST] [debug] setting controller status to 300
+[Wed 27 Aug 2014 17:37:35 BST] [debug] applying plan defaults
+[Wed 27 Aug 2014 17:37:35 BST] [debug] setting controller status to 400
+[Wed 27 Aug 2014 17:37:35 BST] [debug] setting file inclusion to 1
+[Wed 27 Aug 2014 17:37:35 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:35 BST] [debug] setting controller status to 500
+[Wed 27 Aug 2014 17:37:35 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:36 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:36 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:36 BST] [debug] saving controller to db
+[Wed 27 Aug 2014 17:37:36 BST] [debug] calculating controller checksum f1fe40c8975956a682f92eb4530e44af
+[Wed 27 Aug 2014 17:37:38 BST] [debug] loading controller from db
+[Wed 27 Aug 2014 17:37:38 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:38 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:38 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:38 BST] [debug] saving controller to db
+[Wed 27 Aug 2014 17:37:38 BST] [debug] calculating controller checksum f1fe40c8975956a682f92eb4530e44af
+[Wed 27 Aug 2014 17:37:45 BST] [debug] loading controller from db
+[Wed 27 Aug 2014 17:37:45 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:45 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:45 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:45 BST] [debug] saving controller to db
+[Wed 27 Aug 2014 17:37:45 BST] [debug] calculating controller checksum f1fe40c8975956a682f92eb4530e44af
+[Wed 27 Aug 2014 17:37:56 BST] [debug] loading controller from db
+[Wed 27 Aug 2014 17:37:56 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:56 BST] [info] checking plan security
+[Wed 27 Aug 2014 17:37:56 BST] [debug] setting controller status to 700
+[Wed 27 Aug 2014 17:37:56 BST] [debug] saving controller to db
+[Wed 27 Aug 2014 17:37:56 BST] [debug] calculating controller checksum a92deb5a0bc670b302b233945dfb244a
+[Wed 27 Aug 2014 17:37:56 BST] [debug] loading controller from db
+[Wed 27 Aug 2014 17:37:56 BST] [debug] setting controller status to 800

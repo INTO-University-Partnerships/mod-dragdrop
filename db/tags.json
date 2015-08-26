@@ -1,0 +1,62 @@
+{
+    "speech": [
+        {
+            "name": "noun",
+            "abbreviation": "n"
+        },
+        {
+            "name": "verb",
+            "abbreviation": "v"
+        },
+        {
+            "name": "adverb",
+            "abbreviation": "adv"
+        },
+        {
+            "name": "adjective",
+            "abbreviation": "adj"
+        },
+        {
+            "name": "pronoun",
+            "abbreviation": "pro"
+        },
+        {
+            "name": "article",
+            "abbreviation": "art"
+        },
+        {
+            "name": "preposition",
+            "abbreviation": "prep"
+        },
+        {
+            "name": "infinitive",
+            "abbreviation": "infin"
+        },
+        {
+            "name": "gerund",
+            "abbreviation": "ger"
+        },
+        {
+            "name": "subject",
+            "abbreviation": "subj"
+        },
+        {
+            "name": "object",
+            "abbreviation": "obj"
+        },
+        {
+            "name": "conjunctive adverb",
+            "abbreviation": "conj adv"
+        }
+    ],
+    "clause": [
+        {
+            "name": "dependent clause",
+            "abbreviation": "dep"
+        },
+        {
+            "name": "independent clause",
+            "abbreviation": "indep"
+        }
+    ]
+}

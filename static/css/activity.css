@@ -1,0 +1,192 @@
+/* base */
+
+#mod-dragdrop-content {
+    width: 780px;
+}
+
+/* Word blocks and sentences */
+
+div.table {
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+table td.no-word-blocks, table td.no-sentences {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Drag drop */
+
+.drop-area {
+    /*background-color: rgba(92,184,92,0.2);*/
+    clear:both;
+    padding: 10px;
+    display: block;
+    line-height: 20px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.draggable-word-block {
+    margin: 5px;
+    cursor: pointer;
+    display: inline-block;
+    background: #FFF;
+    padding: 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.draggable-word-block.ui-draggable-dragging > div {
+    cursor: move;
+}
+
+#dock-area {
+    clear:both;
+    min-height: 0px;
+    padding: 5px;
+}
+
+.draggable-area-label {
+    float:right;
+    font-style: italic;
+    margin-right:10px;
+}
+
+.dragdrop-buttons {
+    float:right;
+    clear:both;
+}
+
+.remaining-attempts {
+    font-weight:bold;
+}
+
+.dragdrop-abbrev {
+    font-weight: bold;
+    font-style: italic;
+    height:12px;
+}
+
+.dragdrop-abbrev, .dragdrop-text {
+    width:100%;
+    display:block;
+    text-align: center;
+}
+
+/* Key */
+
+.dragdrop-key-container {
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    width: 400px;
+    padding: 2px;
+}
+
+.dragdrop-key-heading {
+    background-color: #49afcd;
+    background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #fff;
+    border-radius: 4px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    display: block;
+    padding:4px;
+}
+
+.dragdrop-key-tag-abbrev {
+    font-weight: bold;
+    font-style: italic;
+}
+.dragdrop-key-subheading {
+    font-weight: bold;
+}
+
+.dragdrop-key-container ul {
+    padding: 2px;
+    margin: 0px;
+}
+
+ul.dragdrop-key-tag-list li{
+    line-height: 20px;
+    display: block;
+    padding: 5px;
+}
+
+.dragdrop-key-tag-group {
+    float:left;
+}
+
+
+/* Attempts */
+td.correct-response {
+    -webkit-box-shadow: 4px 0px 2px -2px rgba(0,204,0,1);
+    -moz-box-shadow: 4px 0px 2px -2px rgba(0,204,25,1);
+    box-shadow: 4px 0px 2px -2px rgba(0,204,0,1);
+}
+td.incorrect-response {
+    -webkit-box-shadow: 4px 0px 2px -2px rgba(204,0,0,1);
+    -moz-box-shadow: 4px 0px 2px -2px rgba(204,0,25,1);
+    box-shadow: 4px 0px 2px -2px rgba(204,0,0,1);
+}
+
+.modal-submission-sentence {
+    padding:10px;
+    display:block;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Settings */
+
+.editor-html {
+    background-color: #ffffff;
+    padding:10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 5px;
+    min-height:60px;
+    cursor: pointer;
+}
+
+.edit-icon {
+    cursor: pointer;
+}
+
+.settings-editor {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width:100%;
+}
+
+.settings-label {
+    font-weight: bold;
+}
+
+input.dragdrop-settings-input, select.dragdrop-settings-input{
+    margin:5px;
+}
+
+/* Comments */
+
+.dragdrop-comment {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 20px 30px 20px;
+    margin-bottom: 8px;
+
+}
+.dragdrop-comment-text {
+    width: 50%;
+    white-space: pre-line;
+}
+.dragdrop-comment-author {
+    white-space:nowrap;
+    float:right;
+    padding-right: 20px;
+    font-style:italic;
+    font-weight: bold;
+    font-size: 12px;
+}

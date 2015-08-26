@@ -1,0 +1,79 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    {# begin word block control #}
+    <div ng-controller="wordBlocksCtrl" class="well well-small">
+        <h4>{{ trans('add_new_word_block', plugin) }}</h4>
+
+        {# begin form #}
+        <form class="form-inline" role="form">
+            <input class="word-block" type="text" ng-trim ng-focus="errorMessage = ''; successMessage = ''"
+                   ng-model="newBlock"/>
+                <span class="button-no-margin">
+                    <button type="submit" class="btn btn-primary" ng-click="addNewBlock()"
+                            ng-disabled="addNewBlockDisabled()">{{ trans('add') }}</button>
+                </span>
+        </form>
+        {# end form #}
+
+        {# begin table #}
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>{{ trans('word_block', plugin) }}</th>
+                    <th>{{ trans('tag', plugin) }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="block in blocks"
+                    word-block-list-item
+                    block="block"
+                    tags="tags"
+                    edit-block="editBlock(block)"
+                    delete-block="deleteBlock(block.id)"
+                    stop-auto-refresh="stopAutoRefresh()"
+                    start-auto-refresh="startAutoRefresh()">
+                </tr>
+                <tr ng-show="blocks.length == 0" class="warning">
+                    <td colspan="2" class="no-word-blocks">{{ trans('no_word_blocks', plugin) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {# end table #}
+    </div>
+    {# end list existing words #}
+
+    {# begin sentence control #}
+    <div ng-controller="sentenceListCtrl" class="well well-small clearfix">
+        <h4>{{ trans('valid_sentences', plugin) }}</h4>
+        {# begin table #}
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="sentence">{{ trans('sentence', plugin) }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sentence in sentences"
+                    sentence-list-item
+                    sentence="sentence"
+                    delete-sentence="deleteSentence(sentence.id)">
+                </tr>
+                <tr ng-show="sentences.length == 0" class="warning">
+                    <td class="no-sentences">{{ trans('no_sentences', plugin) }}</td>
+                </tr>
+                </tbody>
+            </table>
+            {# end table #}
+        </div>
+        <div class="dragdrop-buttons">
+            <a href="#/words/sentence" ng-href="#/words/sentence" class="btn btn-primary">{{ trans('add') }}</a>
+            </a>
+        </div>
+    </div>
+    {# end sentence control #}
+{% endblock %}

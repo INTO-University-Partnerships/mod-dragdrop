@@ -1,0 +1,18 @@
+<tr>
+        <td>
+            {% verbatim %}{{ attempt.firstname }} {{ attempt.lastname }}{% endverbatim %}
+        </td>
+        <td>
+            {% verbatim %}{{ attempt.numattempts }}{% endverbatim %}
+            <span ng-show="attempt.numreset">
+                ({% verbatim %}{{ attempt.numreset }}{% endverbatim %} {{ trans('reset', plugin) }})
+            </span>
+        </td>
+        <td>{% verbatim %}{{ attempt.lastattempt_formatted }}{% endverbatim %}</td>
+        <td ng-show="attempt.completed">{{ trans('yes') }}</td>
+        <td ng-hide="attempt.completed">{{ trans('no') }}</td>
+        <td><button class="btn btn-info" type="button" ng-click="viewAttempts({userid: attempt.id})">
+                {{ trans('view') }}
+            </button>
+        </td>
+</tr>

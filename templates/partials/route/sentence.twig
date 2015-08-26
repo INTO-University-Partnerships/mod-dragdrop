@@ -1,0 +1,38 @@
+{% extends 'base.twig' %}
+{% block content %}
+    <h4>{{ trans('edit_sentence', plugin) }}</h4>
+    <div class="sentence-instruction">{{ trans('create_sentence_instruction', plugin) }}</div>
+    <div class="draggable-area-label">{{ trans('word_blocks', plugin) }}</div>
+
+    {# begin word block dock #}
+    <drop-area-dock id="dock-area-container"
+                    jqyoui-droppable
+                    data-drop="true"
+                    blocks="blocks"
+                    loading="loading"
+                    rendered="rendered"
+                    remove-word-block="removeWordBlock(id)">
+    </drop-area-dock>
+    {# end word block dock #}
+
+    {# begin drop area #}
+    <div class="draggable-area-label">{{ trans('drop_area', plugin) }}</div>
+    <drop-area data-drop="true"
+               jqyoui-droppable
+               placed="placed"
+               rendered="rendered"
+               class="drop-area well"
+               set-loading="setLoading(loading)">
+    </drop-area>
+    {# end drop area #}
+
+    {# begin action buttons #}
+    <div class="dragdrop-buttons">
+        <button ng-disabled="loading" class="btn btn-warning" type="button"
+                ng-click="reset()">{{ trans('reset') }}</button>
+        <button ng-disabled="locked || loading" class="btn btn-primary" type="button"
+                ng-click="saveSentence()">{{ trans('save', plugin) }}</button>
+        <button class="btn btn-default" type="button" ng-click="close()">{{ trans('close', plugin) }}</button>
+    </div>
+    {# end action buttons #}
+{% endblock %}

@@ -1,0 +1,65 @@
+{{ page('module', cm.id, wwwroot ~ slug ~ path('view', {cmid: cm.id})) }}
+{{ navbaradd(trans('dragdropname', plugin)) }}
+{{ jquery_ui() }}
+{{ css('/mod/dragdrop/static/css/activity.css') }}
+{{ header()|raw }}
+<h2>{{ instance.name }}</h2>
+<div ng-app="dragdropApp" ng-view ng-cloak>
+</div>
+<script>
+    CONFIG = {
+        partialsUrl: '{{ wwwroot ~ slug ~ '/partials/' }}',
+        apiUrl: '{{ wwwroot ~ slug ~ path('api_route', {instanceid: instance.id}) }}',
+        menuUrl: '{{ wwwroot ~ slug ~ path('view', {cmid: cm.id}) }}',
+        tagUrl: '{{ wwwroot ~ slug ~ path('get_tags')}}',
+        messages: {
+            {% for m in [
+                       'menu_edit_word_blocks',
+                       'menu_edit_attempt_settings',
+                       'menu_report_attempts',
+                       'menu_make_attempt',
+                       'menu_previous_attempts',
+                       'confirm_delete_word_block',
+                       'word_block_deleted_successfully',
+                       'confirm_delete_sentence',
+                       'sentence_deleted_successfully',
+                       'confirm_delete_comment',
+                       'comment_deleted_successfully',
+                       'confirm_attempt_submission',
+                       'num_attempts_reached',
+                       'activity_completed',
+                       'please_select',
+                       'correct_attempt_title',
+                       'incorrect_attempt_title',
+                       'reset_attempts',
+                       'hint_dialog_title'
+                   ]
+                %}
+            '{{ m }}': '{{ trans('js:' ~ m, plugin) }}'{% if not loop.last %},{% endif %}
+            {% endfor %}
+        },
+        capabilities: {
+            'manage_word_blocks': {% if can_manage_word_blocks %}true{% else %}false{% endif %},
+            'manage_sentences': {% if can_manage_sentences %}true{% else %}false{% endif %},
+            'manage_settings': {% if can_manage_settings %}true{% else %}false{% endif %},
+            'view_activity': {% if can_view_activity %}true{% else %}false{% endif %},
+            'view_attempts': {% if can_view_attempts %}true{% else %}false{% endif %},
+            'manage_comments': {% if can_manage_comments %}true{% else %}false{% endif %},
+            'manage_attempts': {% if can_manage_all_attempts %}true{% else %}false{% endif %}
+        },
+        editorCSS: '{{ wwwroot ~ '/theme/styles.php?type=editor&theme=clean' }}',
+        sesskey: '{{ sesskey() }}',
+        instanceid: {{ instance.id }}
+    };
+</script>
+
+{# begin footer #}
+{% set footer_script %}
+    <script src="{{ bower_url }}angular/angular.min.js"></script>
+    <script src="{{ bower_url }}angular-route/angular-route.min.js"></script>
+    <script src="{{ bower_url }}angular-dragdrop/src/angular-dragdrop.min.js"></script>
+    <script src="{{ bower_url }}angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="{{ wwwroot }}/mod/dragdrop/static/js/build/dragdrop.min.js"></script>
+{% endset %}
+{{ footer(footer_script)|raw }}
+{# end footer #}

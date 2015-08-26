@@ -1,0 +1,70 @@
+{% extends 'base.twig' %}
+{% block content %}
+    <div class="well well-small">
+        <h4>{{ trans('attempt_settings', plugin) }}</h4>
+
+        <div class="settings-editor">
+            <div class="settings-label">{{ trans('num_attempts', plugin) }}</div>
+            <select class="dragdrop-settings-input" name="num_attempts" ng-model="form.num_attempts"
+                    ng-options="n for n in [] | range:1:12" ng-change="attemptsChanged()"></select>
+        </div>
+
+        <div class="settings-editor">
+            <div class="settings-label">{{ trans('display_labels', plugin) }}</div>
+            <input class="dragdrop-settings-input" type="checkbox" name="display_labels"
+                   ng-model="form.display_labels" ng-change="displayLabelsChanged()"/>
+        </div>
+
+        <div class="settings-editor">
+            <div class="settings-label">{{ trans('instructions', plugin) }}
+                <a class="edit-icon"
+                   editor-dialog
+                   ng-attr-dialog-id="instructions"
+                   ng-attr-content="form.instruction"
+                   ng-attr-title="'{{ trans('instructions', plugin) }}'"
+                   ng-attr-reset-messages="resetMessages()">{{ pix_icon('t/editstring', trans('edit'))|raw }}
+                </a>
+            </div>
+            <div class="editor-html" ng-bind-html="form.instruction.html"></div>
+        </div>
+
+        <div class="settings-editor">
+            <div class="settings-label">{{ trans('hint', plugin) }}
+                <a class="edit-icon"
+                   editor-dialog
+                   ng-attr-dialog-id="hint"
+                   ng-attr-content="form.hint"
+                   ng-attr-title="'{{ trans('hint', plugin) }}'"
+                   ng-attr-reset-messages="resetMessages()">{{ pix_icon('t/editstring', trans('edit'))|raw }}
+                </a>
+            </div>
+            <div class="editor-html" ng-bind-html="form.hint.html"></div>
+        </div>
+
+        <div class="settings-editor">
+            <div class="settings-label">{{ trans('feedback_correct', plugin) }}
+                <a class="edit-icon"
+                   editor-dialog
+                   ng-attr-dialog-id="feedback_correct"
+                   ng-attr-content="form.feedback_correct"
+                   ng-attr-title="'{{ trans('feedback_correct', plugin) }}'"
+                   ng-attr-reset-messages="resetMessages()">{{ pix_icon('t/editstring', trans('edit'))|raw }}
+                </a>
+            </div>
+            <div class="editor-html" ng-bind-html="form.feedback_correct.html"></div>
+        </div>
+
+        <div class="settings-editor" ng-repeat="n in [] | range:1:form.num_attempts">
+            <div class="settings-label">{{ trans('feedback_incorrect', plugin) }} {% verbatim %}{{ n }}{% endverbatim %}
+                <a class="edit-icon"
+                   editor-dialog
+                   ng-attr-dialog-id="'feedback' + n"
+                   ng-attr-content="form.feedback[n]"
+                   ng-attr-title="'{{ trans('feedback_incorrect', plugin) }}' + ' ' + n"
+                   ng-attr-reset-messages="resetMessages()">{{ pix_icon('t/editstring', trans('edit'))|raw }}
+                </a>
+            </div>
+            <div class="editor-html" ng-bind-html="form.feedback[n].html"></div>
+        </div>
+    </div>
+{% endblock %}
