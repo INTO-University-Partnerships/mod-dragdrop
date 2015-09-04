@@ -129,7 +129,7 @@ app.service('apiSrv', [
             return deferred.promise;
         };
 
-        this.resetAttempts = function(data) {
+        this.resetAttempts = function (data) {
             var deferred = $q.defer();
             $http.put(url + 'user_attempt/reset/', data).
                 success(function (successData) {
