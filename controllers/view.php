@@ -52,6 +52,9 @@ $controller->get('/{cmid}', function ($cmid) use ($app) {
     $tiny = new moodle_url($CFG->wwwroot . "/lib/editor/tinymce/module.js");
     $PAGE->requires->js($tiny);
 
+    // set heading and title
+    $app['heading_and_title']($course->fullname, $instance->name);
+
     // render
     return $app['twig']->render('view.twig', array(
         'cm' => $cm,
