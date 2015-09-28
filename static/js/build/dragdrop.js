@@ -35,9 +35,9 @@ app.config(['$routeProvider', '$httpProvider', 'CONFIG', function ($routeProvide
     }).otherwise({
         redirectTo: function redirectTo() {
             if (config.capabilities.manage_word_blocks) {
-                return '/words';
+                return "/words";
             }
-            return '/attempt';
+            return "/attempt";
         }
     });
 }]);
@@ -63,13 +63,13 @@ var app = angular.module('dragdrop.controllers', []);
 app.controller('manageCtrl', ['$scope', 'CONFIG', '$location', function ($scope, config, $location) {
     $scope.messages = {};
     if (!config.capabilities.manage_word_blocks) {
-        $location.path('/attempt');
+        $location.path("/attempt");
     }
 }]);
 
 app.controller('wordBlocksCtrl', ['$scope', 'apiSrv', '$timeout', '$window', 'CONFIG', 'tagSrv', function ($scope, apiSrv, $timeout, $window, config, tagSrv) {
     $scope.blocks = [];
-    $scope.newBlock = '';
+    $scope.newBlock = "";
     $scope.timeoutPromise = null;
     $scope.tags = [];
 
@@ -100,7 +100,7 @@ app.controller('wordBlocksCtrl', ['$scope', 'apiSrv', '$timeout', '$window', 'CO
     $scope.addNewBlock = function () {
         apiSrv.post('word_block', { wordblock: $scope.newBlock }).then(function (data) {
             $scope.messages.success = data.successMessage;
-            $scope.newBlock = '';
+            $scope.newBlock = "";
             $scope.getBlocks();
         }, function (error) {
             $scope.messages.error = error.errorMessage;
@@ -192,7 +192,7 @@ app.controller('sentenceListCtrl', ['$scope', 'apiSrv', '$timeout', '$window', '
 
 app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location', 'CONFIG', '$route', function ($scope, apiSrv, $routeParams, $location, config, $route) {
     if (!config.capabilities.manage_sentences) {
-        $location.path('/attempt');
+        $location.path("/attempt");
     }
     $scope.id = $routeParams.id ? $routeParams.id : 0;
     $scope.blocks = [];
@@ -249,9 +249,9 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
             return block.position = parseInt(i) + 1;
         });
         if ($scope.id) {
-            $scope.putSentence({ 'wordblocks': $scope.placed.wordblocks });
+            $scope.putSentence({ wordblocks: $scope.placed.wordblocks });
         } else {
-            $scope.postSentence({ 'wordblocks': $scope.placed.wordblocks });
+            $scope.postSentence({ wordblocks: $scope.placed.wordblocks });
         }
     };
 
@@ -260,7 +260,7 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
         apiSrv.post('sentence_words', data).then(function (response) {
             $scope.messages.success = response.successMessage;
             $scope.id = response.sentence.id;
-            $location.path('/words/sentence/' + response.sentence.id);
+            $location.path("/words/sentence/" + response.sentence.id);
         }, function (error) {
             $scope.messages.error = error.errorMessage;
         })['finally'](function () {
@@ -307,15 +307,15 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
 
 app.controller('attemptCtrl', ['$scope', 'apiSrv', 'CONFIG', '$q', '$sce', '$modal', 'tagSrv', function ($scope, apiSrv, config, $q, $sce, $modal, tagSrv) {
     $scope.blocks = [];
-    $scope.placed = { 'wordblocks': [] };
+    $scope.placed = { wordblocks: [] };
     $scope.messages = {};
     $scope.tags = [];
     $scope.settings = {
-        'instruction': '',
-        'feedback': {},
-        'hint': '',
-        'num_attempts': 0,
-        'feedback_correct': ''
+        instruction: "",
+        feedback: {},
+        hint: "",
+        num_attempts: 0,
+        feedback_correct: ""
     };
     $scope.remaining_attempts = 0;
     $scope.user = {};
@@ -493,7 +493,7 @@ app.controller('attemptCtrl', ['$scope', 'apiSrv', 'CONFIG', '$q', '$sce', '$mod
                         var id = ids.indexOf(block.wordblockid);
                         words.push($scope.blocks[id].wordblock);
                     });
-                    return words.join(' ');
+                    return words.join(" ");
                 },
                 callback: function callback() {
                     return _callback;
@@ -628,7 +628,7 @@ app.controller('previousAttemptsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$
 
     $scope.setFeedbackOnAttempts = function (attempts, feedback) {
         attempts.forEach(function (attempt) {
-            var strFeedback = '';
+            var strFeedback = "";
             if (parseInt(attempt.correct) === 1) {
                 $scope.remaining_attempts = 0;
                 strFeedback = $sce.trustAsHtml($scope.settings.dragdrop.feedback_correct);
@@ -658,7 +658,7 @@ app.controller('commentsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$timeout', '$wind
     $scope.comments = [];
     $scope.manageComments = config.capabilities.manage_comments;
     $scope.timeoutPromise = null;
-    $scope.comment = '';
+    $scope.comment = "";
 
     $scope.getComments = function () {
         $timeout.cancel($scope.timeoutPromise);
@@ -737,7 +737,7 @@ app.controller('commentsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$timeout', '$wind
 
 app.controller('settingsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$location', function ($scope, apiSrv, config, $sce, $location) {
     if (!config.capabilities.manage_settings) {
-        $location.path('/attempt');
+        $location.path("/attempt");
     }
     $scope.messages = {};
     $scope.form = {
@@ -786,7 +786,7 @@ app.controller('settingsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$location
     $scope.initialiseFeedback = function () {
         for (var x = 1; x <= $scope.form.num_attempts; x++) {
             if (!(x in $scope.form.feedback)) {
-                $scope.form.feedback[x] = { raw: '', html: '' };
+                $scope.form.feedback[x] = { raw: "", html: "" };
             }
             $scope.watchFeedback(x);
         }
@@ -860,15 +860,15 @@ app.controller('settingsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$location
     });
 
     $scope.resetMessages = function () {
-        $scope.messages.success = '';
-        $scope.messages.error = '';
+        $scope.messages.success = "";
+        $scope.messages.error = "";
     };
     $scope.getSettings();
 }]);
 
 app.controller('attemptsReportCtrl', ['$scope', 'apiSrv', 'CONFIG', '$location', '$timeout', 'attemptFilterSrv', function ($scope, apiSrv, config, $location, $timeout, attemptFilterSrv) {
     if (!config.capabilities.view_attempts) {
-        $location.path('/attempt');
+        $location.path("/attempt");
     }
     $scope.messages = {};
     $scope.attempts = [];
@@ -879,10 +879,10 @@ app.controller('attemptsReportCtrl', ['$scope', 'apiSrv', 'CONFIG', '$location',
     $scope.filters = attemptFilterSrv.filters;
     $scope.prevFilterQ = attemptFilterSrv.filters.q;
     $scope.sortDefaults = {
-        'user': 'ASC',
-        'lastattempt': 'DESC',
-        'numattempts': 'DESC',
-        'completed': 'DESC'
+        user: 'ASC',
+        lastattempt: 'DESC',
+        numattempts: 'DESC',
+        completed: 'DESC'
     };
 
     $scope.getPageOfAttempts = function (page) {
@@ -934,7 +934,7 @@ app.controller('attemptsReportCtrl', ['$scope', 'apiSrv', 'CONFIG', '$location',
     });
 
     $scope.viewAttempts = function (userid) {
-        $location.path('/attempts/' + userid);
+        $location.path("/attempts/" + userid);
     };
 
     $scope.getPageOfAttempts($scope.currentPage);
@@ -1003,17 +1003,17 @@ app.directive('tinyMce', ['CONFIG', '$interval', '$sce', function (config, $inte
         controller: ['$scope', function ($scope) {
             $scope.intervalPromise = null;
             $scope.mconfig = {
-                'mode': 'exact',
-                'relative_urls': false,
-                'language': 'en',
-                'content_css': config.editorCSS,
-                'directionality': 'ltr',
-                'theme': 'advanced',
-                'skin': 'moodle',
-                'apply_source_formatting': true,
-                'plugins': 'lists,table,style,directionality',
-                'gecko_spellcheck': true,
-                'elements': $scope.id,
+                mode: "exact",
+                relative_urls: false,
+                language: "en",
+                content_css: config.editorCSS,
+                directionality: "ltr",
+                theme: "advanced",
+                skin: "moodle",
+                apply_source_formatting: true,
+                plugins: "lists,table,style,directionality",
+                gecko_spellcheck: true,
+                elements: $scope.id,
                 setup: function setup(editor) {
                     editor.onInit.add(function (ed) {
                         ed.selection.setContent($scope.content.html);
@@ -1120,9 +1120,9 @@ app.directive('editMenu', ['$location', 'CONFIG', function ($location, config) {
             var i, count;
             $scope.menu = [];
             for (i = 0, count = routes.length; i < count; ++i) {
-                var segments = $location.path().split('/');
+                var segments = $location.path().split("/");
                 var active = false;
-                if (routes[i] === '/' + segments[1]) {
+                if (routes[i] === "/" + segments[1]) {
                     active = true;
                 }
                 $scope.menu.push({
@@ -1140,7 +1140,7 @@ app.directive('alerts', ['CONFIG', function (config) {
         restrict: 'E',
         replace: true,
         scope: {
-            'messages': '='
+            messages: '='
         },
         templateUrl: config.partialsUrl + 'directives/alerts.twig',
         link: function link(scope, element) {
@@ -1154,7 +1154,7 @@ app.directive('alerts', ['CONFIG', function (config) {
         controller: ['$scope', function ($scope) {
             $scope.success = $scope.error = $scope.warning = false;
             $scope.$watch('messages.success', function () {
-                if (typeof $scope.messages.success === 'string') {
+                if (typeof $scope.messages.success === "string") {
                     $scope.msg = $scope.messages.success;
                     $scope.success = true;
                     $scope.error = $scope.warning = false;
@@ -1162,7 +1162,7 @@ app.directive('alerts', ['CONFIG', function (config) {
                 }
             }, true);
             $scope.$watch('messages.error', function () {
-                if (typeof $scope.messages.error === 'string') {
+                if (typeof $scope.messages.error === "string") {
                     $scope.msg = $scope.messages.error;
                     $scope.error = true;
                     $scope.success = $scope.warning = false;
@@ -1170,7 +1170,7 @@ app.directive('alerts', ['CONFIG', function (config) {
                 }
             }, true);
             $scope.$watch('messages.warning', function () {
-                if (typeof $scope.messages.warning === 'string') {
+                if (typeof $scope.messages.warning === "string") {
                     $scope.msg = $scope.messages.warning;
                     $scope.warning = true;
                     $scope.success = $scope.error = false;
@@ -1186,11 +1186,11 @@ app.directive('tagSelect', ['CONFIG', function (config) {
         restrict: 'E',
         replace: false,
         scope: {
-            'tags': '=',
-            'tagId': '=',
-            'saveTag': '&',
-            'stopAutoRefresh': '&',
-            'startAutoRefresh': '&'
+            tags: '=',
+            tagId: '=',
+            saveTag: '&',
+            stopAutoRefresh: '&',
+            startAutoRefresh: '&'
         },
         templateUrl: config.partialsUrl + 'directives/tagSelect.twig',
         link: function link(scope, element) {
@@ -1217,12 +1217,12 @@ app.directive('wordBlockListItem', ['$timeout', 'CONFIG', function ($timeout, co
         restrict: 'A',
         replace: false,
         scope: {
-            'block': '=',
-            'tags': '=',
-            'editBlock': '&',
-            'deleteBlock': '&',
-            'stopAutoRefresh': '&',
-            'startAutoRefresh': '&'
+            block: '=',
+            tags: '=',
+            editBlock: '&',
+            deleteBlock: '&',
+            stopAutoRefresh: '&',
+            startAutoRefresh: '&'
         },
         templateUrl: config.partialsUrl + 'directives/wordBlockListItem.twig',
         controller: ['$scope', function ($scope) {
@@ -1290,8 +1290,8 @@ app.directive('sentenceListItem', ['$timeout', 'CONFIG', function ($timeout, con
         restrict: 'A',
         replace: false,
         scope: {
-            'sentence': '=',
-            'deleteSentence': '&'
+            sentence: '=',
+            deleteSentence: '&'
         },
         templateUrl: config.partialsUrl + 'directives/sentenceListItem.twig',
         link: function link(scope) {
@@ -1299,7 +1299,7 @@ app.directive('sentenceListItem', ['$timeout', 'CONFIG', function ($timeout, con
             scope.sentence.wordblocks.forEach(function (block) {
                 words.push(block.wordblock);
             });
-            scope.sentence.string = words.join(' ');
+            scope.sentence.string = words.join(" ");
         }
     };
 }]);
@@ -1363,7 +1363,7 @@ app.directive('dropAreaDock', ['CONFIG', function (config) {
                         return $scope.tags[i].abbreviation;
                     }
                 }
-                return '';
+                return "";
             };
         }],
         link: function link(scope, element) {
@@ -1382,9 +1382,9 @@ app.directive('dropArea', ['CONFIG', '$interval', function (config, $interval) {
     return {
         restrict: 'E',
         scope: {
-            'placed': '=',
-            'setLoading': '&',
-            'rendered': '='
+            placed: '=',
+            setLoading: '&',
+            rendered: '='
         },
         controller: ['$scope', function ($scope) {
 
@@ -1532,8 +1532,8 @@ app.directive('dropArea', ['CONFIG', '$interval', function (config, $interval) {
                 }
                 // right of block is outside the canvas
                 else if (left + width > scope.canvas.width) {
-                    left = scope.canvas.width - width;
-                }
+                        left = scope.canvas.width - width;
+                    }
                 return left;
             };
 
@@ -1570,9 +1570,9 @@ app.directive('attemptReportListItem', ['CONFIG', function (config) {
         restrict: 'A',
         replace: true,
         scope: {
-            'attempt': '=',
-            'messages': '=',
-            'viewAttempts': '&'
+            attempt: '=',
+            messages: '=',
+            viewAttempts: '&'
         },
         templateUrl: config.partialsUrl + 'directives/attemptReportListItem.twig',
         controller: ['$scope', function ($scope) {
@@ -1580,7 +1580,7 @@ app.directive('attemptReportListItem', ['CONFIG', function (config) {
                 $scope.attempt.numattempts = 0;
             }
             if (!$scope.attempt.lastattempt) {
-                $scope.attempt.lastattempt_formatted = '-';
+                $scope.attempt.lastattempt_formatted = "-";
             }
         }]
     };
@@ -1591,10 +1591,10 @@ app.directive('reportPagination', ['CONFIG', function (config) {
         restrict: 'E',
         replace: false,
         scope: {
-            'perPage': '@',
-            'currentPage': '=',
-            'total': '=',
-            'fetchPage': '&'
+            perPage: '@',
+            currentPage: '=',
+            total: '=',
+            fetchPage: '&'
         },
         templateUrl: config.partialsUrl + 'directives/pagination.twig',
         controller: ['$scope', function ($scope) {
@@ -1670,13 +1670,13 @@ app.directive('commentListItem', ['$timeout', 'CONFIG', function ($timeout, conf
         restrict: 'A',
         replace: false,
         scope: {
-            'comment': '=',
-            'tags': '=',
-            'editComment': '&',
-            'deleteComment': '&',
-            'stopAutoRefresh': '&',
-            'startAutoRefresh': '&',
-            'manage': '='
+            comment: '=',
+            tags: '=',
+            editComment: '&',
+            deleteComment: '&',
+            stopAutoRefresh: '&',
+            startAutoRefresh: '&',
+            manage: '='
         },
         templateUrl: config.partialsUrl + 'directives/commentListItem.twig',
         controller: ['$scope', function ($scope) {
@@ -2113,11 +2113,11 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
     this.getAll = function (entity, params) {
         var deferred = $q.defer();
         if (typeof params === 'undefined') {
-            params = '';
+            params = "";
         } else {
-            params = '?' + jQuery.param(params);
+            params = "?" + jQuery.param(params);
         }
-        $http.get(url + entity + '/' + params).success(function (response) {
+        $http.get(url + entity + "/" + params).success(function (response) {
             deferred.resolve(response);
         }).error(function (errorResponse) {
             deferred.reject(errorResponse);
@@ -2127,7 +2127,7 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
 
     this.get = function (entity, id) {
         var deferred = $q.defer();
-        $http.get(url + entity + '/' + id).success(function (response) {
+        $http.get(url + entity + "/" + id).success(function (response) {
             deferred.resolve(response);
         }).error(function (errorResponse) {
             deferred.reject(errorResponse);
@@ -2137,9 +2137,9 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
 
     this.post = function (entity, data, params) {
         var deferred = $q.defer();
-        var fullurl = url + entity + '/' + '?sesskey=' + config.sesskey;
+        var fullurl = url + entity + "/" + '?sesskey=' + config.sesskey;
         if (typeof params !== 'undefined') {
-            fullurl += '&' + jQuery.param(params);
+            fullurl += "&" + jQuery.param(params);
         }
         $http.post(fullurl, data).success(function (response) {
             deferred.resolve(response);
@@ -2151,9 +2151,9 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
 
     this.put = function (entity, id, data, params) {
         var deferred = $q.defer();
-        var fullurl = url + entity + '/' + id + '?sesskey=' + config.sesskey;
+        var fullurl = url + entity + "/" + id + '?sesskey=' + config.sesskey;
         if (typeof params !== 'undefined') {
-            fullurl += '&' + jQuery.param(params);
+            fullurl += "&" + jQuery.param(params);
         }
         $http.put(fullurl, data).success(function (response) {
             deferred.resolve(response);
@@ -2167,9 +2167,9 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
         var deferred = $q.defer();
         // workaround Moodle's JavaScript minifier breaking due to the 'delete' keyword
         var f = $http['delete'];
-        var fullurl = url + entity + '/' + id + '?sesskey=' + config.sesskey;
+        var fullurl = url + entity + "/" + id + '?sesskey=' + config.sesskey;
         if (typeof params !== 'undefined') {
-            fullurl += '&' + jQuery.param(params);
+            fullurl += "&" + jQuery.param(params);
         }
         f(fullurl).success(function (response) {
             deferred.resolve(response);
