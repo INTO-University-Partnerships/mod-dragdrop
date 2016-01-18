@@ -78,7 +78,7 @@ app.controller('wordBlocksCtrl', ['$scope', 'apiSrv', '$timeout', '$window', 'CO
             $scope.blocks = data;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.timeoutPromise = $timeout(function () {
                 $scope.getBlocks();
             }, 10000);
@@ -124,7 +124,7 @@ app.controller('wordBlocksCtrl', ['$scope', 'apiSrv', '$timeout', '$window', 'CO
                 $scope.getBlocks();
                 return;
             }
-            apiSrv['delete']('word_block', id).then(function () {
+            apiSrv.delete('word_block', id).then(function () {
                 $scope.messages.success = config.messages.word_block_deleted_successfully;
                 $scope.getBlocks();
             }, function (error) {
@@ -159,7 +159,7 @@ app.controller('sentenceListCtrl', ['$scope', 'apiSrv', '$timeout', '$window', '
             $scope.sentences = data;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.timeoutPromise = $timeout(function () {
                 $scope.getSentences();
             }, 10000);
@@ -173,7 +173,7 @@ app.controller('sentenceListCtrl', ['$scope', 'apiSrv', '$timeout', '$window', '
                 $scope.getSentences();
                 return;
             }
-            apiSrv['delete']('sentence', wordid).then(function () {
+            apiSrv.delete('sentence', wordid).then(function () {
                 $scope.messages.success = config.messages.sentence_deleted_successfully;
                 $scope.getSentences();
             }, function (error) {
@@ -207,7 +207,7 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
             $scope.blocks = data;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             if (sentenceid) {
                 $scope.$evalAsync(function () {
                     $scope.getSentence(sentenceid);
@@ -263,7 +263,7 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
             $location.path("/words/sentence/" + response.sentence.id);
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.locked = false;
         });
     };
@@ -274,7 +274,7 @@ app.controller('sentenceCtrl', ['$scope', 'apiSrv', '$routeParams', '$location',
             $scope.messages.success = response.successMessage;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.locked = false;
         });
     };
@@ -549,7 +549,7 @@ app.controller('previousAttemptsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$
         }, function (error) {
             $scope.messages.error = error.errorMessage;
             deferred.reject();
-        })['finally'](function () {
+        }).finally(function () {
             $scope.prepareFeedback();
             $scope.calculateRemainingAttempts();
             $scope.loading = false;
@@ -666,7 +666,7 @@ app.controller('commentsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$timeout', '$wind
             $scope.comments = data;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.timeoutPromise = $timeout(function () {
                 $scope.getComments();
             }, 10000);
@@ -696,7 +696,7 @@ app.controller('commentsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$timeout', '$wind
                 $scope.getComments();
                 return;
             }
-            apiSrv['delete']('comment', id, { userid: $scope.userid }).then(function () {
+            apiSrv.delete('comment', id, { userid: $scope.userid }).then(function () {
                 $scope.messages.success = config.messages.comment_deleted_successfully;
                 $scope.getComments();
             }, function (error) {
@@ -778,7 +778,7 @@ app.controller('settingsCtrl', ['$scope', 'apiSrv', 'CONFIG', '$sce', '$location
         }, function (error) {
             $scope.messages.error = error.errorMessage;
             $scope.getFeedback();
-        })['finally'](function () {
+        }).finally(function () {
             $scope.getSettings();
         });
     };
@@ -892,7 +892,7 @@ app.controller('attemptsReportCtrl', ['$scope', 'apiSrv', 'CONFIG', '$location',
             $scope.total = data.total;
         }, function (error) {
             $scope.messages.error = error.errorMessage;
-        })['finally'](function () {
+        }).finally(function () {
             $scope.timeoutPromise = $timeout(function () {
                 $scope.getPageOfAttempts($scope.currentPage);
             }, 10000);
@@ -981,11 +981,11 @@ app.controller('editorModalCtrl', ['$scope', '$modalInstance', 'id', 'content', 
 },{}],4:[function(require,module,exports){
 'use strict';
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 var _droppedBlock = require('./dropped-block');
 
 var _droppedBlock2 = _interopRequireDefault(_droppedBlock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = angular.module('dragdrop.directives', []);
 
@@ -1398,7 +1398,7 @@ app.directive('dropArea', ['CONFIG', '$interval', function (config, $interval) {
              * dropped blocks
              * @type {object}
              */
-            $scope.droppedBlocks = new _droppedBlock2['default']();
+            $scope.droppedBlocks = new _droppedBlock2.default();
 
             /**
              * object containing properties about the drop area
@@ -1718,16 +1718,13 @@ app.directive('commentListItem', ['$timeout', 'CONFIG', function ($timeout, conf
 }]);
 
 },{"./dropped-block":5}],5:[function(require,module,exports){
-/**
- * Places blocks that have been dropped on to the drop area/canvas
- */
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-exports["default"] = function () {
+exports.default = function () {
 
     /**
      * properties of the canvas
@@ -2082,8 +2079,6 @@ exports["default"] = function () {
     };
 };
 
-module.exports = exports["default"];
-
 },{}],6:[function(require,module,exports){
 'use strict';
 
@@ -2163,10 +2158,10 @@ app.service('apiSrv', ['$http', '$q', 'CONFIG', function ($http, $q, config) {
         return deferred.promise;
     };
 
-    this['delete'] = function (entity, id, params) {
+    this.delete = function (entity, id, params) {
         var deferred = $q.defer();
         // workaround Moodle's JavaScript minifier breaking due to the 'delete' keyword
-        var f = $http['delete'];
+        var f = $http.delete;
         var fullurl = url + entity + "/" + id + '?sesskey=' + config.sesskey;
         if (typeof params !== 'undefined') {
             fullurl += "&" + jQuery.param(params);
